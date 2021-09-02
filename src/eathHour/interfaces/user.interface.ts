@@ -4,5 +4,5 @@ export interface User {
   id?: string;
   name: string;
   description?: string;
-  qty: number;
+  qtyty: number;
 }
