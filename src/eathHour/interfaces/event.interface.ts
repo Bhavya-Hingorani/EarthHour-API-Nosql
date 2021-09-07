@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-export interface thread {
+export interface Event {
     eventId: number;	 
     eventTitle: string;		 
     eventDescription: string;		 

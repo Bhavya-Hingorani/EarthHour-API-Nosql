@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-export interface thread {
+export interface organization {
     organizationId: number;	 
     orgName: string;	 
     orgDescription: string;		 

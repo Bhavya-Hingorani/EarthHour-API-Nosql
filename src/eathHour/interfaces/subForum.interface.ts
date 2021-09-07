@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 
-export interface User {
+export interface subForum {
     subForumId:	number;	 
     forumId: number;	 
     subForumTitle: string;	 
