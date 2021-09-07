@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 
 export interface User {
-  id?: string;
-  name: string;
-  description?: string;
-  qtyty: number;
+  userId: number;
+  userName: string;	 
+  email: string;
+  password:	string;
 }
