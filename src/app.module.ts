@@ -13,10 +13,14 @@ import { ThreadsService } from './threads/threads.service';
 import { SubThreadsController } from './sub-threads/sub-threads.controller';
 import { EventsController } from './events/events.controller';
 import { OrganizationsController } from './organizations/organizations.controller';
+import { SubThreadsService } from './sub-threads/sub-threads.service';
+import { EventsService } from './events/events.service';
+import { OrganizationService } from './organization/organization.service';
+import { OrganizationsService } from './organizations/organizations.service';
 
 @Module({
   imports: [],
   controllers: [AppController, UsersController, AdminController, ForumsController, SubForumsController, ThreadsController, SubThreadsController, EventsController, OrganizationsController],
-  providers: [AppService, UsersService, ForumsService, SubForumsService, ThreadsService],
+  providers: [AppService, UsersService, ForumsService, SubForumsService, ThreadsService, SubThreadsService, EventsService, OrganizationService, OrganizationsService],
 })
 export class AppModule {}

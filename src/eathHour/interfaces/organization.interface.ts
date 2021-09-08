@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 
-export interface organization {
-    organizationId: number;	 
+export interface Organization {
+    organizationId: string;	 
     orgName: string;	 
     orgDescription: string;		 
     orgImage: string;		 
