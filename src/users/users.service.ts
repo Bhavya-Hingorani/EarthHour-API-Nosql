@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/eathHour/interfaces/user.interface';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class UsersService {
+  constructor(@InjectModel('User') public readonly userModel: Model<User>) {}
+
   private readonly users: User[] = [
     {
       userId: '69',
@@ -18,7 +22,7 @@ export class UsersService {
     },
   ];
 
-  getParticularUser(id: string): User {
-    return this.users.find((user) => user.userId === id);
+  async getParticularUser(id: string): Promise<User> {
+    return this.userModel.findOne({ _id: id });
   }
 }
