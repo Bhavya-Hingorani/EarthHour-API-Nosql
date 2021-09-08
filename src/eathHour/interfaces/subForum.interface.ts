@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 
 export interface subForum {
-    subForumId:	number;	 
-    forumId: number;	 
+    subForumId:	string;	 
+    forumId: string;	 
     subForumTitle: string;	 
     subForumDescription: string;	
 }
