@@ -18,8 +18,9 @@ import { EventsService } from './events/events.service';
 import { OrganizationsService } from './organizations/organizations.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import config from 'src/config/keys';
+import { UsersService } from './users/users.service';
 @Module({
-  imports: [MongooseModule.forRoot(config.mongoUri,), UserModule],
+  imports: [MongooseModule.forRoot(config.mongoUri)],
   controllers: [AppController, AdminController, ForumsController, SubForumsController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
   providers: [AppService, ForumsService, SubForumsService, ThreadsService, SubThreadsService, EventsService, OrganizationsService],
 })
