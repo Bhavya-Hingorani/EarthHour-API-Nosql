@@ -20,7 +20,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import config from 'src/config/keys';
 import { UsersService } from './users/users.service';
 @Module({
-  imports: [MongooseModule.forRoot(config.mongoUri)],
+  imports: [UserModule, MongooseModule.forRoot(config.mongoUri)],
   controllers: [AppController, AdminController, ForumsController, SubForumsController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
   providers: [AppService, ForumsService, SubForumsService, ThreadsService, SubThreadsService, EventsService, OrganizationsService],
 })

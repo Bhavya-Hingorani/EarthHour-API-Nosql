@@ -5,7 +5,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel('User') public readonly userModel: Model<User>) {}
+  constructor(@InjectModel('user') public readonly userModel: Model<User>) {}
 
   private readonly users: User[] = [
     {
