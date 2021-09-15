@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
-export class CreateItemDto {
+export class CreateUserDto {
   readonly userName: string;
   readonly email: string;
-  readonly password: number;
+  readonly password: string;
 }

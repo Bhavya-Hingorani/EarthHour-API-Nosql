@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Injectable } from '@nestjs/common';
 import { User } from 'src/eathHour/interfaces/user.interface';
 import { Model } from 'mongoose';
@@ -7,22 +8,18 @@ import { InjectModel } from '@nestjs/mongoose';
 export class UsersService {
   constructor(@InjectModel('user') public readonly userModel: Model<User>) {}
 
-  private readonly users: User[] = [
-    {
-      userId: '69',
-      userName: 'queenSris',
-      email: 'callMeAPlant@gmail.com',
-      password: 'ILoveKarasunoo',
-    },
-    {
-      userId: '420',
-      userName: 'chutiyaAmit',
-      email: 'MrKnowItAll@gmail.com',
-      password: 'youAreJustNaiveMan',
-    },
-  ];
-
+  async updateUser(id: string, updatedUser: User): Promise<User>{
+    return await this.userModel.findByIdAndUpdate(id, updatedUser, {new: false});
+  }
+  async getAllUsers(): Promise<User[]>{
+    return this.userModel.find();
+  }
   async getParticularUser(id: string): Promise<User> {
     return this.userModel.findOne({ _id: id });
+  }
+
+  async addUser(user: User): Promise<User>{
+    const newUser = new this.userModel(user);
+    return newUser.save(); 
   }
 }
