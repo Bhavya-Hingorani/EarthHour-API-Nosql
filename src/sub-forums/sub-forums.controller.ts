@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Get, Delete, Body, Param } from '@nestjs/common';
+import { Controller, Post, Get, Delete, Body, Param, Put } from '@nestjs/common';
 import { CreateSubForumDto } from 'src/eathHour/dto/create-sub-forums.dto';
 import { GetSubForumsDto } from 'src/eathHour/dto/get-sub-forums.dto';
 import { SubForumsService } from './sub-forums.service';
@@ -10,18 +10,23 @@ export class SubForumsController {
     constructor( private readonly subForumService: SubForumsService){}
 
   @Post()
-  createSubForum(@Body() createForumDto: CreateSubForumDto): string {
-    return `name: ${CreateSubForumDto}`;
+  createSubForum(@Body() createSubForumDto: CreateSubForumDto): Promise<subForum> {
+    return this.subForumService.addSubForum(createSubForumDto);
+  }
+
+  @Put(':id')
+  async updateUser(@Param() param, @Body() createSubForumDto: CreateSubForumDto): Promise<subForum> {
+    return await this.subForumService.updateSubForum(param.id, createSubForumDto);
   }
 
   @Get(':id')
-  getSubForum(@Param() param):subForum {
+  getSubForum(@Param() param):Promise<subForum> {
     return this.subForumService.getParticularSubForum(param.id);
   }
 
   @Get()
-  getSubForumsFromForumId(@Body() getSubForumsDto: GetSubForumsDto):subForum[] {
-    return this.subForumService.getAllSubFoumsOfForum(getSubForumsDto.forumId);
+  getSubForumsFromForumId(@Body() getSubForumsDto: GetSubForumsDto): Promise<subForum[]> {
+    return this.subForumService.getAllSubForumsByForumId(getSubForumsDto.forumId);
   }
 
   @Delete(':id')

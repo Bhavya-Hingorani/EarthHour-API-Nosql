@@ -1,6 +1,6 @@
+/* eslint-disable prettier/prettier */
 export class CreateSubForumDto {
-    readonly subForumName: string;
-    readonly forumId: string;
-    readonly subForumDescription: string;
-  }
-  
+  readonly forumId: string;
+  readonly subForumTitle: string;
+  readonly subForumDescription: string;
+}

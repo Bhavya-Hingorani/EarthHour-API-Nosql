@@ -2,14 +2,11 @@
 import { Module } from '@nestjs/common';
 import { UserModule } from './eathHour/modules/users.module';
 import { ForumModule } from './eathHour/modules/forum.module';
+import { SubForumModule } from './eathHour/modules/sub-forum.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AdminController } from './admin/admin.controller';
-import { ForumsController } from './forums/forums.controller';
-import { SubForumsController } from './sub-forums/sub-forums.controller';
 import { ThreadsController } from './threads/threads.controller';
-import { ForumsService } from './forums/forums.service';
-import { SubForumsService } from './sub-forums/sub-forums.service';
 import { ThreadsService } from './threads/threads.service';
 import { SubThreadsController } from './sub-threads/sub-threads.controller';
 import { EventsController } from './events/events.controller';
@@ -21,8 +18,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import config from 'src/config/keys';
 import { AdminService } from './admin/admin.service';
 @Module({
-  imports: [UserModule, ForumModule, MongooseModule.forRoot(config.mongoUri)],
-  controllers: [AppController, AdminController, SubForumsController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
-  providers: [AppService, SubForumsService, ThreadsService, SubThreadsService, EventsService, OrganizationsService, AdminService],
+  imports: [UserModule, ForumModule, SubForumModule, MongooseModule.forRoot(config.mongoUri)],
+  controllers: [AppController, AdminController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
+  providers: [AppService, ThreadsService, SubThreadsService, EventsService, OrganizationsService, AdminService],
 })
 export class AppModule {}
