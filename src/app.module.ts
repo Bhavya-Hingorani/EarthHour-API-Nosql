@@ -3,6 +3,7 @@ import { Module } from '@nestjs/common';
 import { UserModule } from './eathHour/modules/users.module';
 import { ForumModule } from './eathHour/modules/forum.module';
 import { SubForumModule } from './eathHour/modules/sub-forum.module';
+import { AdminModule } from './eathHour/modules/admin.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AdminController } from './admin/admin.controller';
@@ -18,8 +19,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import config from 'src/config/keys';
 import { AdminService } from './admin/admin.service';
 @Module({
-  imports: [UserModule, ForumModule, SubForumModule, MongooseModule.forRoot(config.mongoUri)],
-  controllers: [AppController, AdminController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
-  providers: [AppService, ThreadsService, SubThreadsService, EventsService, OrganizationsService, AdminService],
+  imports: [UserModule, ForumModule, SubForumModule, AdminModule, MongooseModule.forRoot(config.mongoUri)],
+  controllers: [AppController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
+  providers: [AppService, ThreadsService, SubThreadsService, EventsService, OrganizationsService],
 })
 export class AppModule {}

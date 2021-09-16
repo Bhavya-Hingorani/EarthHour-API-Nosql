@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-export interface User {
-    adminId: number;
+export interface Admin {
     username: string; 
     password: string;
 }
