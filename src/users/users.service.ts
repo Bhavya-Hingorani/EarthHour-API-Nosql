@@ -12,14 +12,14 @@ export class UsersService {
     return await this.userModel.findByIdAndUpdate(id, updatedUser, {new: false});
   }
   async getAllUsers(): Promise<User[]>{
-    return this.userModel.find();
+    return await this.userModel.find();
   }
   async getParticularUser(id: string): Promise<User> {
-    return this.userModel.findOne({ _id: id });
+    return await this.userModel.findOne({ _id: id });
   }
 
   async addUser(user: User): Promise<User>{
     const newUser = new this.userModel(user);
-    return newUser.save(); 
+    return await newUser.save(); 
   }
 }

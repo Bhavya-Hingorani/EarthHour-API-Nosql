@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Post, Get, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Post, Get, Delete, Param, Body, Put } from '@nestjs/common';
 import { CreateForumDto } from 'src/eathHour/dto/create-forum.dto';
 import { ForumsService } from './forums.service';
 import { Forum } from 'src/eathHour/interfaces/forum.interface';
@@ -9,17 +9,27 @@ export class ForumsController {
 
 
   @Post()
-  createForum(@Body() createForumDto: CreateForumDto): string {
-    return `name: ${createForumDto.forumName}`;
+  createForum(@Body() createForumDto: CreateForumDto): Promise<Forum> {
+    return this.forumsService.addForum(createForumDto);
+  }
+
+  @Put(':id')
+  async updateUser(@Param() param, @Body() createUserDto: CreateForumDto): Promise<Forum> {
+    return await this.forumsService.updateForum(param.id, createUserDto);
   }
 
   @Get(':id')
-  getForum(@Param() param): Forum {
+  getForum(@Param() param): Promise<Forum> {
     return this.forumsService.getParticularForum(param.id);
+  }
+
+  @Get()
+  getAllForums(): Promise<Forum[]> {
+    return this.forumsService.getAllForums();
   }
 
   @Delete(':id')
   deleteForum(@Param() param) {
-    return `id: ${param.id}`;
+    return this.forumsService.deleteForum(param.id);
   }
 }

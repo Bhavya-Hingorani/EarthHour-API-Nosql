@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Delete, Post, Body, Param, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Put } from '@nestjs/common';
 import { CreateUserDto } from 'src/eathHour/dto/create-user.dto';
 import { UsersService } from './users.service';
 import { User } from 'src/eathHour/interfaces/user.interface';

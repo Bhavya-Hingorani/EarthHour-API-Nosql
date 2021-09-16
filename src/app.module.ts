@@ -1,6 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { Module } from '@nestjs/common';
 import { UserModule } from './eathHour/modules/users.module';
+import { ForumModule } from './eathHour/modules/forum.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { AdminController } from './admin/admin.controller';
@@ -18,10 +19,10 @@ import { EventsService } from './events/events.service';
 import { OrganizationsService } from './organizations/organizations.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import config from 'src/config/keys';
-import { UsersService } from './users/users.service';
+import { AdminService } from './admin/admin.service';
 @Module({
-  imports: [UserModule, MongooseModule.forRoot(config.mongoUri)],
-  controllers: [AppController, AdminController, ForumsController, SubForumsController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
-  providers: [AppService, ForumsService, SubForumsService, ThreadsService, SubThreadsService, EventsService, OrganizationsService],
+  imports: [UserModule, ForumModule, MongooseModule.forRoot(config.mongoUri)],
+  controllers: [AppController, AdminController, SubForumsController, ThreadsController, SubThreadsController, EventsController, OrganizationController],
+  providers: [AppService, SubForumsService, ThreadsService, SubThreadsService, EventsService, OrganizationsService, AdminService],
 })
 export class AppModule {}
