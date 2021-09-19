@@ -1,6 +1,6 @@
 export class CreateThreadsDto {
-    readonly subForumId: number;
-    readonly userId: number;
+    readonly threadId: string;
+    readonly userId: string;
     readonly threadUpvotes: number;
     readonly threadTitle: string;
     readonly threadBody: string;
