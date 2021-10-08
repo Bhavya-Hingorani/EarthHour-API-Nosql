@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Event } from 'src/eathHour/interfaces/event.interface';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class EventsService {
+  constructor(@InjectModel('event') public readonly eventModel: Model<Event>) {}
+
   private readonly events: Event[] = [
     {
       eventId: '99',
@@ -14,6 +18,10 @@ export class EventsService {
       numberOfUsersIn: 16,
     },
   ];
+
+  async updateEvent(id: string, updatedEvent: Event): Promise<Event>{
+    return await this.eventModel.findByIdAndUpdate(id, updatedEvent);
+  }
 
   getAllEvents(): Event[] {
     return this.events;

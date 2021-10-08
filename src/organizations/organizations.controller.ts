@@ -11,6 +11,11 @@ export class OrganizationController {
         return `name: ${createOrgDto.orgName}`;
     }
 
+    @Get()
+    getAllOrganization(): Promise<Organization[]> {
+      return this.organizationsService.getAllOrganization();
+    }
+  
     @Get(':id')
     getOrg(@Param() param): Organization {
       return this.organizationsService.getParticularOrganization(param.id);

@@ -15,7 +15,7 @@ export class SubForumsController {
   }
 
   @Put(':id')
-  async updateUser(@Param() param, @Body() createSubForumDto: CreateSubForumDto): Promise<subForum> {
+  async updateSubForum(@Param() param, @Body() createSubForumDto: CreateSubForumDto): Promise<subForum> {
     return await this.subForumService.updateSubForum(param.id, createSubForumDto);
   }
 
@@ -33,4 +33,6 @@ export class SubForumsController {
   deleteSubForum(@Param() param) {
     return `id: ${param.id}`;
   }
+
+  
 }

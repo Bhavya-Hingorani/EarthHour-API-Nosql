@@ -1,8 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { Organization } from 'src/eathHour/interfaces/organization.interface';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
 
 @Injectable()
 export class OrganizationsService {
+  constructor(@InjectModel('Organization') public readonly organizationModel: Model<Organization>) {}
+
   private readonly organizations: Organization[] = [
     {
       organizationId: '467',
@@ -19,7 +23,7 @@ export class OrganizationsService {
     },
   ];
 
-  getAllOrganization(): Organization[] {
+  async getAllOrganization(): Promise<Organization[]> {
     return this.organizations;
   }
 

@@ -3,6 +3,9 @@ import { Injectable } from '@nestjs/common';
 import { subForum } from 'src/eathHour/interfaces/subForum.interface';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { Forum } from 'src/eathHour/interfaces/forum.interface';
+import { ForumsController } from 'src/forums/forums.controller';
+
 @Injectable()
 export class SubForumsService {
   constructor(@InjectModel('subForum') public readonly subForumModel: Model<subForum>) {}
@@ -22,11 +25,20 @@ export class SubForumsService {
     return newSubForum.save(); 
   }
 
+  
+  async getAllSubForumsByForumId(id: string): Promise<subForum[]>{
+    return this.subForumModel.find({forumId: id });
+  }
+  
   async deleteSubForum(id: string): Promise<subForum>{
     return await this.subForumModel.findByIdAndDelete(id);
   }
 
-  async getAllSubForumsByForumId(id: string): Promise<subForum[]>{
-    return this.subForumModel.find({forumId: id });
+  // async deleteAllSubForums(id: string): Promise<Forum>{
+  //   return this.subForumModel.de;
+  // }
+  async deleteAllSubForums(id: string): Promise<subForum[]>{
+    return this.subForumModel.deleteMany({forumId: id});
   }
+
 }

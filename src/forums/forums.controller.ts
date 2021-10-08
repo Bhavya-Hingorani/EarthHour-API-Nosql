@@ -2,10 +2,13 @@
 import { Controller, Post, Get, Delete, Param, Body, Put } from '@nestjs/common';
 import { CreateForumDto } from 'src/eathHour/dto/create-forum.dto';
 import { ForumsService } from './forums.service';
+import { SubForumsService } from 'src/sub-forums/sub-forums.service';
 import { Forum } from 'src/eathHour/interfaces/forum.interface';
 @Controller('forums')
 export class ForumsController {
-  constructor(private readonly forumsService: ForumsService){}
+  constructor(private readonly forumsService: ForumsService, private readonly subForumsService: SubForumsService){}
+
+ 
 
 
   @Post()
@@ -30,6 +33,7 @@ export class ForumsController {
 
   @Delete(':id')
   deleteForum(@Param() param) {
-    return this.forumsService.deleteForum(param.id);
+    return this.forumsService.deleteForum(param.id),
+           this.subForumsService.deleteAllSubForums(param.id);
   }
 }
