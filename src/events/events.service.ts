@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class EventsService {
-  constructor(@InjectModel('event') public readonly eventModel: Model<Event>) {}
+  constructor(@InjectModel('events') public readonly eventModel: Model<Event>) {}
 
   private readonly events: Event[] = [
     {

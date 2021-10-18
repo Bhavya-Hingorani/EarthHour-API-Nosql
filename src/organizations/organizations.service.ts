@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 
 @Injectable()
 export class OrganizationsService {
-  constructor(@InjectModel('Organization') public readonly organizationModel: Model<Organization>) {}
+  constructor(@InjectModel('organization') public readonly organizationModel: Model<Organization>) {}
 
   private readonly organizations: Organization[] = [
     {

@@ -6,8 +6,8 @@ import { SubForumsService } from 'src/sub-forums/sub-forums.service';
 import { Forum } from 'src/eathHour/interfaces/forum.interface';
 @Controller('forums')
 export class ForumsController {
-  constructor(private readonly forumsService: ForumsService, private readonly subForumsService: SubForumsService){}
-
+  constructor(private readonly forumsService: ForumsService){}
+//, private readonly subForumsService: SubForumsService
  
 
 
@@ -33,7 +33,7 @@ export class ForumsController {
 
   @Delete(':id')
   deleteForum(@Param() param) {
-    return this.forumsService.deleteForum(param.id),
-           this.subForumsService.deleteAllSubForums(param.id);
+    return this.forumsService.deleteForum(param.id);
   }
+  //this.subForumsService.deleteAllSubForums(param.id)
 }

@@ -37,8 +37,8 @@ export class SubForumsService {
   // async deleteAllSubForums(id: string): Promise<Forum>{
   //   return this.subForumModel.de;
   // }
-  async deleteAllSubForums(id: string): Promise<subForum[]>{
-    return this.subForumModel.deleteMany({forumId: id});
-  }
+//  async deleteAllSubForums(id: string): Promise<subForum[]>{
+//    return this.subForumModel.deleteMany({forumId: id});
+//  }
 
 }
