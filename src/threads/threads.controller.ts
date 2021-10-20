@@ -9,7 +9,7 @@ import{Thread} from 'src/eathHour/interfaces/thread.interface';
     constructor( private readonly threadsService: ThreadsService){}
     
     @Post()
-    createForum(@Body() createThreadsDto: CreateThreadsDto): Promise<Thread> {
+    addThread(@Body() createThreadsDto: CreateThreadsDto): Promise<Thread> {
         return this.threadsService.addThread(createThreadsDto);
     }
     
@@ -19,18 +19,18 @@ import{Thread} from 'src/eathHour/interfaces/thread.interface';
     }
 
     @Get(':id')
-    getThread(@Param() param):Thread {
+    getParticularThread(@Param() param):Promise<Thread> {
         return this.threadsService.getParticularThread(param.id);
     }
 
 
     @Get()
-    getThreadfromThreadId(@Body() createThreadsDto: CreateThreadsDto):Thread[] {
-        return this.threadsService.getAllThreads(createThreadsDto.threadId);
+    getThreadsfromSubForumId(@Body() createThreadsDto: CreateThreadsDto):Promise<Thread[]> {
+        return this.threadsService.getThreadsfromSubForumId(createThreadsDto.threadId);
     }
 
     @Delete(':id')
-    deleteForum(@Param() param) {
+    deleteThread(@Param() param) {
         return this.threadsService.deleteThread(param.id);
     }
 

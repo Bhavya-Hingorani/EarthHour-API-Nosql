@@ -6,3 +6,4 @@ export const ForumSchema = new mongoose.Schema({
     forumName: String,	 
     creatorId: String,
 });
+

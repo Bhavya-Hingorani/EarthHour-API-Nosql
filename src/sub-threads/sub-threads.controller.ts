@@ -8,15 +8,19 @@ export class SubThreadsController {
     constructor(private readonly subThreadsService: SubThreadsService ){}
 
     @Post()
-    createSubThread(@Body() createSubThreadsDto: CreateSubThreadsDto): string{
-        return `Body: ${createSubThreadsDto.subThreadBody}`;
+    createSubThread(@Body() createSubThreadsDto: CreateSubThreadsDto): Promise<SubThread>{
+      return this.subThreadsService.createSubThread(createSubThreadsDto);
     }
 
-    @Get(':id')
-    getSubThread(@Param() param): SubThread[] {
-      return this.subThreadsService.getAllSubThreads(param.id);
+    @Get()
+    async getAllSubThreads():Promise<SubThread[]>{
+      return await this.subThreadsService.getAllSubThreads();
     }
-    
+
+    @Get()
+    async getParticularSubThread(@Param() param): Promise<SubThread> {
+      return await this.subThreadsService.getParticularSubThread(param.id);
+    }
 
     @Put(':id')
     async updateSubThread(@Param() param, @Body() createSubThreadDto: CreateSubThreadsDto): Promise<SubThread> {
@@ -24,13 +28,18 @@ export class SubThreadsController {
     }
 
     @Get()
-    getSubThreadsFromThreadId(@Body() getSubThreadsDto: GetSubThreadsDto): Promise<SubThread[]> {
+    getAllSubThreadsByThreadId(@Body() getSubThreadsDto: GetSubThreadsDto): Promise<SubThread[]> {
       return this.subThreadsService.getAllSubThreadsByThreadId(getSubThreadsDto.threadId);
     }
     
-
     @Delete(':id')
     deleteSubThread(@Param() param) {
       return `id: ${param.id}`;
     }
+
+    @Delete(':id')
+    deleteAllSubThreadsFromThreadId(@Body() getSubThreadsDto: GetSubThreadsDto): Promise<SubThread[]> {
+      return this.subThreadsService.deleteAllSubThreadsFromThreadId(getSubThreadsDto.threadId);
+    }
+
 }

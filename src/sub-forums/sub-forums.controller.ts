@@ -34,6 +34,9 @@ export class SubForumsController {
     return `id: ${param.id}`;
   }
 
-  
-  
+  @Delete(':id')
+  deleteAllSubForums(@Param() param) {
+    return `id: ${param.id}`;
+  }
+
 }

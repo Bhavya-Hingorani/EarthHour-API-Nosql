@@ -4,7 +4,7 @@ export interface Thread {
     threadId: string;		 
     subForumId: string;	 
     userId: string;		 
-    upvotes: number;		 
+    threadUpvotes: number;		 
     threadTitle: string;		 
     threadBody: string;		 
     threadAttachment: string;	

@@ -7,18 +7,27 @@ import { InjectModel } from '@nestjs/mongoose';
 export class SubThreadsService {
   constructor(@InjectModel('subThread') public readonly subThreadModel: Model<SubThread>) {}
 
-  private readonly subThreads: SubThread[] = [
-    {
-      subThreadId: '98',
-      threadId: '123',
-      userId: '420',
-      upvotes: 120,
-      subThreadBody: 'You dont know man you are naive',
-    },
-  ];
+  // private readonly subThreads: SubThread[] = [
+  //   {
+  //     subThreadId: '98',
+  //     threadId: '123',
+  //     userId: '420',
+  //     upvotes: 120,
+  //     subThreadBody: 'You dont know man you are naive',
+  //   },
+  // ];
 
-  getAllSubThreads(id: string): SubThread[] {
-    return this.subThreads.filter((subThread) => subThread.subThreadId === id);
+  async createSubThread(subThread: SubThread): Promise<SubThread>{
+    const newSubThread = new this.subThreadModel(subThread);
+    return await newSubThread.save(); 
+  }
+
+  async getAllSubThreads(): Promise<SubThread[]>{
+    return await this.subThreadModel.find();
+  }
+
+  async getParticularSubThread(id: string): Promise<SubThread> {
+    return await this.subThreadModel.findOne({ subThreadId: id });
   }
 
   async updateSubThread(id: string, updatedSubThread: SubThread): Promise<SubThread>{
@@ -29,7 +38,12 @@ export class SubThreadsService {
     return this.subThreadModel.find({threadId: id });
   }
 
-  getparticularThread(id: string): SubThread {
-    return this.subThreads.find((subThread) => subThread.subThreadId === id);
+  async deleteSubThread(id: string): Promise<SubThread>{
+    return await this.subThreadModel.findByIdAndDelete(id);
   }
+  
+   async deleteAllSubThreadsFromThreadId(id: string): Promise<SubThread[]>{
+     const deleteAllSubThreads = this.subThreadModel.find({threadId: id});
+     return await deleteAllSubThreads.deleteMany({});
+   }
 }
