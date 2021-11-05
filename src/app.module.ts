@@ -22,6 +22,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 import { BusinessProductController } from './business-product/business-product.controller';
 import { BusinessProductService } from './business-product/business-product.service';
+import { PostUserController } from './post-user/post-user.controller';
+import { PostUserService } from './post-user/post-user.service';
 
 import config from 'src/config/keys';
 @Module({
@@ -36,7 +38,7 @@ import config from 'src/config/keys';
     entities: [BusinessProduct],
     synchronize: true,
   }),],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, PostUserController],
+  providers: [AppService, PostUserService],
 })
 export class AppModule {}

@@ -23,7 +23,11 @@ export class BusinessProductService {
   }
 
   findAll(): Promise<BusinessProduct[]> {
-    return this.businessProductRepository.find();
+    return this.businessProductRepository.find({
+      where: {
+        isActive: true,
+      },
+    });
   }
 
   findOne(id: number): Promise<BusinessProduct> {

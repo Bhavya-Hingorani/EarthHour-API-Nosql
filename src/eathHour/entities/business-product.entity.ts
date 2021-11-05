@@ -4,7 +4,7 @@ import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 @Entity()
 export class BusinessProduct {
   @PrimaryGeneratedColumn()
-  public id: number;
+  id: number;
 
   @Column()
   pName: string;
