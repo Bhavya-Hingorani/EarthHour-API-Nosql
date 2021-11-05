@@ -11,7 +11,8 @@ import { SubForumModule } from './eathHour/modules/sub-forum.module';
 import { AdminModule } from './eathHour/modules/admin.module';
 
 import { BusinessProductModule } from './eathHour/modules/business-product.module';
-
+import { PostUserModule } from './eathHour/modules/post-user.module';
+import { PostUser } from './eathHour/entities/post-user.entity';
 import { BusinessProduct } from './eathHour/entities/business-product.entity';
 
 import { AppController } from './app.controller';
@@ -27,7 +28,7 @@ import { PostUserService } from './post-user/post-user.service';
 
 import config from 'src/config/keys';
 @Module({
-  imports: [UserModule, ForumModule,SubForumModule, AdminModule, OrganizationModule,EventModule, ThreadModule,SubThreadsModule,BusinessProductModule,MongooseModule.forRoot(config.mongoUri), 
+  imports: [UserModule, ForumModule,SubForumModule, AdminModule, OrganizationModule,EventModule, ThreadModule,SubThreadsModule,BusinessProductModule,PostUserModule,MongooseModule.forRoot(config.mongoUri), 
     TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
@@ -38,7 +39,7 @@ import config from 'src/config/keys';
     entities: [BusinessProduct],
     synchronize: true,
   }),],
-  controllers: [AppController, PostUserController],
-  providers: [AppService, PostUserService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
