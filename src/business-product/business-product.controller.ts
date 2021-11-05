@@ -12,7 +12,7 @@ export class BusinessProductController {
   ) {}
 
   @Get()
-  createBusinessProduct(): Promise<BusinessProduct[]> {
+  getBusinessProduct(): Promise<BusinessProduct[]> {
     return this.businessProductService.findAll();
   }
 

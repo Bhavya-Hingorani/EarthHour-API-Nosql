@@ -10,7 +10,15 @@ export class PostUserService {
     private postUserRepository: Repository<PostUser>,
   ) {}
 
-  addUser(id: number): Promise<PostUser> {
-    return this.postUserRepository.save({ id });
+  addUser(postUser: PostUser): Promise<PostUser> {
+    return this.postUserRepository.save( postUser);
+  }
+
+  findAll(): Promise<PostUser[]> {
+    return this.postUserRepository.find();
+  }
+
+  findOne(id: number): Promise<PostUser> {
+    return this.postUserRepository.findOne(id);
   }
 }
