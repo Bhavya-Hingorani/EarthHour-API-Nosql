@@ -7,9 +7,6 @@ import { Forum } from 'src/eathHour/interfaces/forum.interface';
 @Controller('forums')
 export class ForumsController {
   constructor(private readonly forumsService: ForumsService){}
-//, private readonly subForumsService: SubForumsService
- 
-
 
   @Post()
   createForum(@Body() createForumDto: CreateForumDto): Promise<Forum> {
