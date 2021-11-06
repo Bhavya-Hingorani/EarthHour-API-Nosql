@@ -12,6 +12,8 @@ import { AdminModule } from './eathHour/modules/admin.module';
 
 import { BusinessProductModule } from './eathHour/modules/business-product.module';
 import { PostUserModule } from './eathHour/modules/post-user.module';
+import { CustomerProductModule } from './eathHour/modules/customer-product.module';
+
 import { PostUser } from './eathHour/entities/post-user.entity';
 import { BusinessProduct } from './eathHour/entities/business-product.entity';
 
@@ -21,14 +23,10 @@ import { AppService } from './app.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
-import { BusinessProductController } from './business-product/business-product.controller';
-import { BusinessProductService } from './business-product/business-product.service';
-import { PostUserController } from './post-user/post-user.controller';
-import { PostUserService } from './post-user/post-user.service';
-
 import config from 'src/config/keys';
+import { CustomerProduct } from './eathHour/entities/customer-product.entity';
 @Module({
-  imports: [UserModule, ForumModule,SubForumModule, AdminModule, OrganizationModule,EventModule, ThreadModule,SubThreadsModule,BusinessProductModule,PostUserModule,MongooseModule.forRoot(config.mongoUri), 
+  imports: [UserModule, ForumModule,SubForumModule, AdminModule, OrganizationModule,EventModule, ThreadModule,SubThreadsModule,BusinessProductModule,PostUserModule,CustomerProductModule,MongooseModule.forRoot(config.mongoUri), 
     TypeOrmModule.forRoot({
     type: 'postgres',
     host: 'localhost',
@@ -36,7 +34,7 @@ import config from 'src/config/keys';
     username: 'postgres',
     password: 'password',
     database: 'earthHour',
-    entities: [BusinessProduct],
+    entities: [BusinessProduct, PostUser, CustomerProduct],
     synchronize: true,
   }),],
   controllers: [AppController],

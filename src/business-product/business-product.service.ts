@@ -16,18 +16,14 @@ export class BusinessProductService {
     return this.businessProductRepository.save(businesssProduct);
   }
 
-  async productSold(id: number): Promise<UpdateResult> {
-    const bp = await this.businessProductRepository.findOne(id);
-    bp.isActive = false;
-    return this.businessProductRepository.update(id, bp);
-  }
+  // async productSold(id: number): Promise<UpdateResult> {
+  //   const bp = await this.businessProductRepository.findOne(id);
+  //   bp.isActive = false;
+  //   return this.businessProductRepository.update(id, bp);
+  // }
 
   findAll(): Promise<BusinessProduct[]> {
-    return this.businessProductRepository.find({
-      where: {
-        isActive: true,
-      },
-    });
+    return this.businessProductRepository.find();
   }
 
   findOne(id: number): Promise<BusinessProduct> {

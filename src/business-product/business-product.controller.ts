@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
 import { BusinessProduct } from 'src/eathHour/entities/business-product.entity';
 import { BusinessProductService } from './business-product.service';
@@ -21,10 +22,10 @@ export class BusinessProductController {
     return this.businessProductService.findOne(param.id);
   }
 
-  @Put(':id')
-  productSold(@Param() param): Promise<UpdateResult> {
-    return this.businessProductService.productSold(param.id);
-  }
+  // @Put(':id')
+  // productSold(@Param() param): Promise<UpdateResult> {
+  //   return this.businessProductService.productSold(param.id);
+  // }
 
   @Post()
   addBusinessProduct(
