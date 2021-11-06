@@ -19,7 +19,8 @@ export class PostUserController {
   }
 
   @Get(':id')
-  getBusinessProductById(@Param() param): Promise<PostUser> {
+  getBusinessProductById(@Param() param): Promise<PostUser[]> {
     return this.postUserService.findOne(param.id);
   }
+  
 }

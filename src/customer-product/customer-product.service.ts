@@ -10,12 +10,22 @@ export class CustomerProductService {
     private customerProductRepository: Repository<CustomerProduct>,
   ) {}
 
-  findAll(): Promise<CustomerProduct[]> {
-    return this.customerProductRepository.find();
+  findAllActive(): Promise<CustomerProduct[]> {
+    return this.customerProductRepository.find({
+      where: {
+        isActive: true,
+      },
+      relations: ['seller'],
+    });
   }
 
   findOne(id: number): Promise<CustomerProduct> {
-    return this.customerProductRepository.findOne(id);
+    return this.customerProductRepository.findOne({
+      where: {
+        cProId: id,
+      },
+      relations: ['seller'],
+    });
   }
 
   addCustomerProduct(

@@ -10,8 +10,13 @@ export class CustomerProductController {
     private readonly customerProductService: CustomerProductService,
   ) {}
   @Get()
-  getAllCustomerProducts(): Promise<CustomerProduct[]> {
-    return this.customerProductService.findAll();
+  getAllActiveCustomerProducts(): Promise<CustomerProduct[]> {
+    return this.customerProductService.findAllActive();
+  }
+
+  @Get(':id')
+  getCustomerProductById(@Param() param): Promise<CustomerProduct> {
+    return this.customerProductService.findOne(param.id);
   }
 
   @Put(':id')

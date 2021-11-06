@@ -19,7 +19,7 @@ export class PostUserService {
     return this.postUserRepository.find();
   }
 
-  findOne(id: number): Promise<PostUser> {
-    return this.postUserRepository.findOne(id);
+  findOne(id: number): Promise<PostUser[]> {
+    return this.postUserRepository.find({relations: ['products']});
   }
 }
