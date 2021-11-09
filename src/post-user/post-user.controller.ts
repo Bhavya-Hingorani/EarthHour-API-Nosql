@@ -9,8 +9,8 @@ export class PostUserController {
   constructor(private readonly postUserService: PostUserService) {}
 
   @Post()
-  addUser(@Body() createPostUserDto: CreatePostUserDto): Promise<PostUser> {
-    return this.postUserService.addUser(createPostUserDto);
+  addPostUser(@Body() createPostUserDto: CreatePostUserDto): Promise<PostUser> {
+    return this.postUserService.addPostUser(createPostUserDto);
   }
 
   @Get()

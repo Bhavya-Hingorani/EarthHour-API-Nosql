@@ -11,7 +11,7 @@ export class PostUserService {
     private postUserRepository: Repository<PostUser>,
   ) {}
 
-  addUser(postUser: PostUser): Promise<PostUser> {
+  addPostUser(postUser: PostUser): Promise<PostUser> {
     return this.postUserRepository.save(postUser);
   }
 

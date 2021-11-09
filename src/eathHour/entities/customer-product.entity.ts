@@ -23,7 +23,7 @@ export class CustomerProduct {
   @Column({ default: true })
   isActive: boolean;
 
-  @OneToMany(() => PostUser, user => user.id)
+  @ManyToOne(() => PostUser, user => user.id)
   seller: PostUser;
 
   @ManyToOne(() => Bill, b => b.id)
