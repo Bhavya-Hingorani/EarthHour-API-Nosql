@@ -11,6 +11,8 @@ export class SubForumsController {
 
   @Post()
   createSubForum(@Body() createSubForumDto: CreateSubForumDto): Promise<subForum> {
+    console.log(createSubForumDto instanceof CreateSubForumDto)
+    
     return this.subForumService.addSubForum(createSubForumDto);
   }
 

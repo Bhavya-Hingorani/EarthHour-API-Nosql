@@ -6,5 +6,7 @@ export class CreateThreadsDto {
     readonly threadTitle: string;
     readonly threadBody: string;
     readonly threadAttachment: string;
+
+    
     //readonly upvotes: number;
 }

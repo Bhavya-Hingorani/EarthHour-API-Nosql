@@ -8,6 +8,7 @@ export class ThreadsService {
 
   async addThread(thread: Thread): Promise<Thread>{
     const newThread = new this.ThreadModel(thread);
+    // console.log(thread)
     return newThread.save(); 
   }
 

@@ -17,8 +17,9 @@ export class EventsController {
   constructor(private readonly eventService: EventsService) {}
 
   @Post()
-  createEvent(@Body() createEventDto: CreateEventDto): string {
-    return `name: ${createEventDto.eventTitle}`;
+  createEvent(@Body() createEventDto: CreateEventDto): Promise<Event> {
+    return this.eventService.createEvent(createEventDto);
+
   }
 
   @Put(':id')
