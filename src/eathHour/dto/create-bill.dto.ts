@@ -4,6 +4,6 @@ import { CustomerProduct } from "../entities/customer-product.entity";
 
 export class CreateBillDto {
   readonly id: number;
-  readonly product: CustomerProduct[];
+  readonly product: CustomerProduct[];  
   readonly buyer: PostUser[];
 }

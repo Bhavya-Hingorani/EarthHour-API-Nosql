@@ -11,7 +11,12 @@ export class BillService {
   ) {}
 
   getBillByBuyerId(id: number): Promise<Bill[]> {
-    return this.billRepository.find({ relations: ['buyer', 'product'] });
+    return this.billRepository.find({
+      where: {
+        buyer: id,
+      },
+      relations: ['buyer', 'product'],
+    });
   }
 
   createNewBill(bill: Bill): Promise<Bill> {
