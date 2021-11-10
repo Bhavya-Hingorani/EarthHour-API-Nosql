@@ -2,8 +2,9 @@
 import * as mongoose from 'mongoose';
 
 export const SubThreadsSchema = new mongoose.Schema({
-    threadId: String, 
     subThreadId: String,
-    subThreadDescription: String,
-    
+    threadId: String,
+    userId: String,
+    upvotes: Number,
+    subThreadBody: String,    
 });

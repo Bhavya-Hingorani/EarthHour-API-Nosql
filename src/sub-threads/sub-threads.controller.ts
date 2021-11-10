@@ -1,45 +1,72 @@
-import { Controller , Post, Get,Put, Delete, Param, Body} from '@nestjs/common';
+/* eslint-disable prettier/prettier */
+import {
+  Controller,
+  Post,
+  Get,
+  Put,
+  Delete,
+  Param,
+  Body,
+} from '@nestjs/common';
 import { SubThreadsService } from './sub-threads.service';
 import { CreateSubThreadsDto } from 'src/eathHour/dto/create-sub-thread.dto';
 import { GetSubThreadsDto } from 'src/eathHour/dto/get-sub-threads.dto';
 import { SubThread } from 'src/eathHour/interfaces/subThread.interface';
 @Controller('sub-threads')
 export class SubThreadsController {
-    constructor(private readonly subThreadsService: SubThreadsService ){}
+  constructor(private readonly subThreadsService: SubThreadsService) {}
 
-    @Post()
-    createSubThread(@Body() createSubThreadsDto: CreateSubThreadsDto): Promise<SubThread>{
-      return this.subThreadsService.createSubThread(createSubThreadsDto);
-    }
+  @Post()
+  createSubThread(
+    @Body() createSubThreadsDto: CreateSubThreadsDto,
+  ): Promise<SubThread> {
+    return this.subThreadsService.createSubThread(createSubThreadsDto);
+  }
 
-    @Get()
-    async getAllSubThreads():Promise<SubThread[]>{
-      return await this.subThreadsService.getAllSubThreads();
-    }
+  @Get()
+  async getAllSubThreads(): Promise<SubThread[]> {
+    console.log("ELooo I am hereeee")
+    return await this.subThreadsService.getAllSubThreads();
+  }
 
-    @Get()
-    async getParticularSubThread(@Param() param): Promise<SubThread> {
-      return await this.subThreadsService.getParticularSubThread(param.id);
-    }
+  @Get(':id')
+  async getParticularSubThread(@Param() param): Promise<SubThread> {
+    console.log("ELooo I am here")
+    return await this.subThreadsService.getParticularSubThread(param.id);
+  }
 
-    @Put(':id')
-    async updateSubThread(@Param() param, @Body() createSubThreadDto: CreateSubThreadsDto): Promise<SubThread> {
-      return await this.subThreadsService.updateSubThread(param.id, createSubThreadDto);
-    }
+  @Put(':id')
+  async updateSubThread(
+    @Param() param,
+    @Body() createSubThreadDto: CreateSubThreadsDto,
+  ): Promise<SubThread> {
+    return await this.subThreadsService.updateSubThread(
+      param.id,
+      createSubThreadDto,
+    );
+  }
 
-    @Get()
-    getAllSubThreadsByThreadId(@Body() getSubThreadsDto: GetSubThreadsDto): Promise<SubThread[]> {
-      return this.subThreadsService.getAllSubThreadsByThreadId(getSubThreadsDto.threadId);
-    }
-    
-    @Delete(':id')
-    deleteSubThread(@Param() param) {
-      return `id: ${param.id}`;
-    }
+  @Get()
+  getAllSubThreadsByThreadId(
+    @Body() getSubThreadsDto: GetSubThreadsDto,
+  ): Promise<SubThread[]> {
+    console.log("ELooo I am here")
+    return this.subThreadsService.getAllSubThreadsByThreadId(
+      getSubThreadsDto.threadId,
+    );
+  }
 
-    @Delete(':id')
-    deleteAllSubThreadsFromThreadId(@Body() getSubThreadsDto: GetSubThreadsDto): Promise<SubThread[]> {
-      return this.subThreadsService.deleteAllSubThreadsFromThreadId(getSubThreadsDto.threadId);
-    }
+  @Delete(':id')
+  deleteSubThread(@Param() param) {
+    return `id: ${param.id}`;
+  }
 
+  @Delete(':id')
+  deleteAllSubThreadsFromThreadId(
+    @Body() getSubThreadsDto: GetSubThreadsDto,
+  ): Promise<SubThread[]> {
+    return this.subThreadsService.deleteAllSubThreadsFromThreadId(
+      getSubThreadsDto.threadId,
+    );
+  }
 }
