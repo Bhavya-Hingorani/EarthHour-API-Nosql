@@ -35,7 +35,7 @@ import { Bill } from './eathHour/entities/bill.entity';
     port: 5432,
     username: 'postgres',
     password: 'password',
-    database: 'earthHour',
+    database: 'EarthHourOffical',
     entities: [BusinessProduct, PostUser, CustomerProduct, Bill],
     synchronize: true,
   }),],
